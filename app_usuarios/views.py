@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-def cadastroUser(request):
-    return render(request, "app_usuarios/cadastroUser.html")
+def controleUser(request):
+    return render(request, "app_usuarios/controleUser.html")
 
 # Create your views here.
 def loginUser(request):
