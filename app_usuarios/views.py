@@ -7,6 +7,8 @@ def controleUser(request):
 def loginUser(request):
     return render(request, "app_usuarios/loginUser.html")
 
+def listarUser(request):
+    return render(request, "app_usuarios/listarUser.html")
 
 
 
