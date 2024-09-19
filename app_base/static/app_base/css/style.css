@@ -1,29 +1,29 @@
-/* Estilo da navbar */
+
 .navbar {
     background-color: #06523f; /* Azul claro para o fundo da navbar */
 }
 
 /* Borda ao passar o mouse nos itens do menu */
 .nav-link:hover, .dropdown-item:hover {
-    border: 1px solid #000; /* Borda preta */
-    border-radius: 5px;     /* Bordas arredondadas */
+    border: 1px solid #000;
+    border-radius: 5px;     
 }
 
-/* Estilo da borda fixa branca para o botão de login */
+
 .login-btn {
-    border: 2px solid #fff; /* Borda branca fixa */
-    color: #000;            /* Cor do texto preta */
-    padding: 15px 30px;     /* Aumenta o padding para tornar o botão maior */
-    border-radius: 5px;     /* Bordas arredondadas */
-    background-color: transparent; /* Fundo transparente */
-    font-size: 16px;        /* Aumenta o tamanho da fonte */
-    font-weight: bold;      /* Torna o texto em negrito */
-    transition: border-color 0.3s, background-color 0.3s; /* Suaviza as transições de borda e fundo */
+    border: 2px solid #fff; 
+    color: #000;           
+    padding: 15px 30px;     
+    border-radius: 5px;    
+    background-color: transparent; 
+    font-size: 16px;       
+    font-weight: bold;     
+    transition: border-color 0.3s, background-color 0.3s; 
 }
 
-/* Quando o mouse passa sobre o botão de login */
+
 .login-btn:hover {
-    border-color: #000;     /* Altera a cor da borda para preta */
-    color: #000;            /* Cor do texto preta */
-    background-color: #fff; /* Adiciona fundo branco ao passar o mouse */
+    border-color: #000;    
+    color: #000;            
+    background-color: #fff; 
 }
