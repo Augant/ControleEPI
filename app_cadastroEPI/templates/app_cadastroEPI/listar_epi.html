@@ -1,0 +1,44 @@
+{% extends "app_base/global/index.html" %}
+
+{% load static %}
+
+{% block title %}Listar EPIs{% endblock title %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Lista de EPIs</h1>
+
+        <form method="GET" action="{% url 'listar_epi' %}" class="mb-3">
+            <input type="text" name="q" placeholder="Pesquisar por nome" value="{{ request.GET.q }}" class="form-control">
+            <button type="submit" class="btn btn-secondary mt-2">Buscar</button>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome do EPI</th>
+                    <th>Descrição</th>
+                    <th>Quantidade Total</th>
+                    <th>Quantidade Disponível</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for epi in epis %}
+                    <tr>
+                        <td>{{ epi.nome_epi }}</td>
+                        <td>{{ epi.descricao_epi }}</td>
+                        <td>{{ epi.quantidade_total }}</td>
+                        <td>{{ epi.quantidade_disponivel }}</td>
+                        <td>
+                            <a href="{% url 'atualizar_epi' epi.id %}" class="btn btn-warning btn-sm">Atualizar</a>
+                            <a href="{% url 'deletar_epi' epi.id %}" class="btn btn-danger btn-sm">Deletar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <a href="{% url 'criar_epi' %}" class="btn btn-success mt-3">Cadastrar Novo EPI</a>
+    </div>
+{% endblock content %}

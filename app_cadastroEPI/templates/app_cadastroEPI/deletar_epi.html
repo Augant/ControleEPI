@@ -1,0 +1,17 @@
+{% extends "app_base/global/index.html" %}
+
+{% load static %}
+
+{% block title %}Deletar EPI{% endblock title %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Deletar EPI: {{ epi.nome_epi }}</h1>
+        <p>Tem certeza que deseja deletar este EPI?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Deletar</button>
+            <a href="{% url 'listar_epi' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+{% endblock content %}

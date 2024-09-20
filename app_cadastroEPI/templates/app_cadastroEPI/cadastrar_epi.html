@@ -1,0 +1,40 @@
+{% extends "app_base/global/index.html" %}
+
+{% load static %}
+
+{% block title %}Cadastrar EPI{% endblock title %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Cadastrar EPI</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.nome_epi.label_tag }}  <!-- Rótulo do Nome do EPI -->
+                {{ form.nome_epi }}  <!-- Campo de entrada -->
+            </div>
+            <div class="form-group">
+                {{ form.descricao_epi.label_tag }}  <!-- Rótulo da Descrição do EPI -->
+                {{ form.descricao_epi }}  <!-- Campo de entrada -->
+            </div>
+            <div class="form-group">
+                {{ form.quantidade_total.label_tag }}  <!-- Rótulo da Quantidade Total -->
+                {{ form.quantidade_total }}  <!-- Campo de entrada -->
+            </div>
+            <div class="form-group">
+                <label for="id_quantidade_disponivel">Quantidade Disponível:</label>
+                <input type="text" id="id_quantidade_disponivel" name="quantidade_disponivel" class="form-control" readonly>
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+    </div>
+
+    <script>
+        const quantidadeTotalInput = document.getElementById('id_quantidade_total');
+        const quantidadeDisponivelInput = document.getElementById('id_quantidade_disponivel');
+
+        quantidadeTotalInput.addEventListener('input', function() {
+            quantidadeDisponivelInput.value = quantidadeTotalInput.value;
+        });
+    </script>
+{% endblock content %}
