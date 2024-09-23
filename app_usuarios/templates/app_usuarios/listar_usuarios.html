@@ -1,0 +1,44 @@
+{% extends "app_base/global/index.html" %}
+
+{% load static %}
+
+{% block title %}Listar Usuários{% endblock title %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Lista de Usuários</h1>
+
+        <form method="GET" action="{% url 'listar_usuarios' %}" class="mb-3">
+            <input type="text" name="q" placeholder="Pesquisar por nome" value="{{ request.GET.q }}" class="form-control">
+            <button type="submit" class="btn btn-secondary mt-2">Buscar</button>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome do Usuário</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th>Tipo de Usuário</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario.nome_usuario }}</td>
+                        <td>{{ usuario.cpf }}</td>
+                        <td>{{ usuario.email }}</td>
+                        <td>{{ usuario.tipo_usuario }}</td>
+                        <td>
+                            <a href="{% url 'atualizar_usuario' usuario.id %}" class="btn btn-warning btn-sm">Atualizar</a>
+                            <a href="{% url 'confirmar_deletar_usuario' usuario.id %}" class="btn btn-danger btn-sm">Deletar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <a href="{% url 'cadastrar_usuario' %}" class="btn btn-success mt-3">Cadastrar Novo Usuário</a>
+    </div>
+{% endblock content %}
