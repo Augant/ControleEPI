@@ -3,12 +3,20 @@ from .models import Usuario
 from .forms import UsuarioForm
 
 def listar_usuarios(request):
-    if (query := request.GET.get('q')):
+    query = request.GET.get('q', '')
+    cpf_query = request.GET.get('cpf', '')
+
+    if query and cpf_query:
+        usuarios = Usuario.objects.filter(nome_usuario__icontains=query, cpf__icontains=cpf_query)
+    elif query:
         usuarios = Usuario.objects.filter(nome_usuario__icontains=query)
+    elif cpf_query:
+        usuarios = Usuario.objects.filter(cpf__icontains=cpf_query)
     else:
         usuarios = Usuario.objects.all()
-    
+
     return render(request, 'app_usuarios/listar_usuarios.html', {'usuarios': usuarios})
+
 
 def cadastrar_usuario(request):
     if request.method == 'POST':

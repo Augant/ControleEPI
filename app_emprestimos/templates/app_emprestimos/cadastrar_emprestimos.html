@@ -1,0 +1,31 @@
+{% extends "app_base/global/index.html" %}
+
+{% load static %}
+
+{% block title %}Cadastrar Empréstimo{% endblock title %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Cadastrar Empréstimo</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.usuario.label_tag }}  <!-- Rótulo do Usuário -->
+                {{ form.usuario }}  <!-- Campo de entrada do Usuário -->
+            </div>
+            <div class="form-group">
+                {{ form.epi.label_tag }}  <!-- Rótulo do EPI -->
+                {{ form.epi }}  <!-- Campo de entrada do EPI -->
+            </div>
+            <div class="form-group">
+                {{ form.data_emprestimo.label_tag }}  <!-- Rótulo da Data de Empréstimo -->
+                {{ form.data_emprestimo }}  <!-- Campo de entrada da Data de Empréstimo -->
+            </div>
+            <div class="form-group">
+                {{ form.data_devolucao.label_tag }}  <!-- Rótulo da Data de Devolução -->
+                {{ form.data_devolucao }}  <!-- Campo de entrada da Data de Devolução -->
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+    </div>
+{% endblock content %}

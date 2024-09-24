@@ -9,8 +9,11 @@
         <h1>Lista de Usuários</h1>
 
         <form method="GET" action="{% url 'listar_usuarios' %}" class="mb-3">
-            <input type="text" name="q" placeholder="Pesquisar por nome" value="{{ request.GET.q }}" class="form-control">
-            <button type="submit" class="btn btn-secondary mt-2">Buscar</button>
+            <div class="input-group">
+                <input type="text" name="q" placeholder="Pesquisar por nome" value="{{ request.GET.q }}" class="form-control">
+                <input type="text" name="cpf" placeholder="Pesquisar por CPF" value="{{ request.GET.cpf }}" class="form-control">
+                <button type="submit" class="btn btn-secondary">Buscar</button>
+            </div>
         </form>
 
         <table class="table">

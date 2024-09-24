@@ -1,8 +1,7 @@
 from django.urls import path
-from app_emprestimos.views import  emprestimo, listarEmprestismo
+from .views import listar_emprestimos, criar_emprestimo
 
 urlpatterns = [
-    path('emprestimo/', emprestimo),
-    path('listarEmprestimo/', listarEmprestismo),
-    
+    path('listar_emprestimo/', listar_emprestimos, name='listar_emprestimos'),
+    path('cadastrar_emprestimo/', criar_emprestimo, name='cadastrar_emprestimo'),
 ]
