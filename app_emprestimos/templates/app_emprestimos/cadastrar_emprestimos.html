@@ -23,7 +23,12 @@
             </div>
             <div class="form-group">
                 {{ form.data_devolucao.label_tag }}  <!-- Rótulo da Data de Devolução -->
+                Caso não possua deixar em branco!
                 {{ form.data_devolucao }}  <!-- Campo de entrada da Data de Devolução -->
+            </div>
+            <div class="form-group">
+                {{ form.quantidade.label_tag }}  <!-- Rótulo da Quantidade -->
+                {{ form.quantidade }}  <!-- Campo de entrada da Quantidade -->
             </div>
             <button type="submit" class="btn btn-primary">Salvar</button>
         </form>

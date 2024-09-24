@@ -1,0 +1,26 @@
+{% extends "app_base/global/index.html" %}
+
+{% block title %}Devolver Empréstimo{% endblock title %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Devolver Empréstimo</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Funcionário: {{ emprestimo.usuario.nome_usuario }}</label>
+            </div>
+            <div class="form-group">
+                <label>EPI: {{ emprestimo.epi.nome_epi }}</label>
+            </div>
+            <div class="form-group">
+                <label>Quantidade: {{ emprestimo.quantidade }}</label>
+            </div>
+            <div class="form-group">
+                <label>Data de Devolução:</label>
+                <input type="date" name="data_devolucao" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Confirmar Devolução</button>
+        </form>
+    </div>
+{% endblock content %}

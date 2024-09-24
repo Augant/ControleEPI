@@ -4,10 +4,11 @@
     <link rel="stylesheet" href="{% static 'app_base/css/style.css' %}">
 </head>
 
-<header>
+<header id="custom-header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Bem vindo!</a>
+            <img src="{% static 'app_base/img/epi.png' %}" alt="EPI" width="150" height="100">
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -24,8 +25,8 @@
                             Empréstimo de EPI
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/cadastrar_emprestimo">Efetuar Empréstimo</a></li>
-                            <li><a class="dropdown-item" href="/listar_emprestimo">Pesquisar Emprestimo EPI</a></li>
+                            <li><a class="dropdown-item" href="/cadastrar_emprestimos">Efetuar Empréstimo</a></li>
+                            <li><a class="dropdown-item" href="/listar_emprestimos">Pesquisar Emprestimo EPI</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -52,7 +53,9 @@
                 <!-- Mantenha o botão de login à direita -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link login-btn" href="/loginUser">Login</a>
+                        <div class="grid-item">
+                            <a href="/login" class="login-btn">Login</a>
+                        </div>
                     </li>                  
                 </ul>
             </div>

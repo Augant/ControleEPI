@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Usuario
 from .forms import UsuarioForm
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 def listar_usuarios(request):
     query = request.GET.get('q', '')
@@ -48,3 +50,15 @@ def confirmar_deletar_usuario(request, id):
         return redirect('listar_usuarios')
     
     return render(request, 'app_usuarios/confirmar_deletar_usuario.html', {'usuario': usuario})
+
+def login_view(request):
+    if request.method == 'POST':
+        cpf = request.POST.get('cpf')
+        senha = request.POST.get('senha')
+        user = authenticate(request, username=cpf, password=senha)
+        if user is not None:
+            login(request, user)
+            return redirect('home')  # Redirecione para a página inicial ou outra página após o login
+        else:
+            messages.error(request, "CPF ou senha inválidos.")
+    return render(request, 'app_usuarios/login.html')

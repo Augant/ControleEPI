@@ -1,0 +1,16 @@
+{% extends "app_base/global/index.html" %}
+
+{% block title %}Deletar Empréstimo{% endblock title %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Deletar Empréstimo</h1>
+        <p>Tem certeza que deseja deletar o empréstimo de {{ emprestimo.usuario.nome_usuario }} para o EPI {{ emprestimo.epi.nome_epi }}?</p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Deletar</button>
+            <a href="{% url 'listar_emprestimos' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+{% endblock content %}

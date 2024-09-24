@@ -9,7 +9,7 @@
         <form method="GET" action="{% url 'listar_emprestimos' %}" class="mb-3">
             <div class="input-group">
                 <input type="text" name="funcionario" placeholder="Pesquisar por Funcionário" value="{{ request.GET.funcionario }}" class="form-control">
-                <input type="text" name="cpf" placeholder="Pesquisar por CPF" value="{{ request.GET.cpf }}" class="form-control">  <!-- Campo para CPF -->
+                <input type="text" name="cpf" placeholder="Pesquisar por CPF" value="{{ request.GET.cpf }}" class="form-control">
                 <input type="text" name="epi" placeholder="Pesquisar por EPI" value="{{ request.GET.epi }}" class="form-control">
                 <button type="submit" class="btn btn-secondary">Buscar</button>
             </div>
@@ -21,8 +21,10 @@
                     <th>Funcionário</th>
                     <th>CPF</th>
                     <th>EPI</th>
+                    <th>Quantidade Emprestada</th>  <!-- Adicionando a coluna de quantidade -->
                     <th>Data do Empréstimo</th>
                     <th>Data de Devolução</th>
+                    <th>Ações</th>  <!-- Nova coluna para ações -->
                 </tr>
             </thead>
             <tbody>
@@ -31,8 +33,13 @@
                         <td>{{ emprestimo.usuario.nome_usuario }}</td>
                         <td>{{ emprestimo.usuario.cpf }}</td>
                         <td>{{ emprestimo.epi.nome_epi }}</td>
+                        <td>{{ emprestimo.quantidade }}</td>  <!-- Exibindo a quantidade emprestada -->
                         <td>{{ emprestimo.data_emprestimo }}</td>
                         <td>{{ emprestimo.data_devolucao }}</td>
+                        <td>
+                            <a href="{% url 'devolver_emprestimo' emprestimo.id %}" class="btn btn-warning btn-sm">Devolver</a>
+                            <a href="{% url 'deletar_emprestimo' emprestimo.id %}" class="btn btn-danger btn-sm">Deletar</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

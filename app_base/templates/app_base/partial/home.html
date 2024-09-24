@@ -3,9 +3,43 @@
 {% load static %}
 
 {% block title %}Home{% endblock title %}
-<html>
+
 {% block content %}
-<br>
-<a href="">TELA INICIAL DA APLICAÇÃO</a>
-<br>
+
+<div class="home-container text-center">
+    <div class="grid-item">
+        <h2>Bem-vindo ao Sistema de Controle de EPIs</h2>
+        <p>Gerencie os empréstimos e controle a utilização dos Equipamentos de Proteção Individual de forma eficiente.</p>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid-item access-title">
+            <h3>Acessos Rápidos</h3>
+        </div>
+        <div class="grid-item access-item">
+            <a href="/cadastrar_emprestimos">Efetuar Empréstimo</a>
+        </div>
+        <div class="grid-item access-item">
+            <a href="/listar_emprestimos">Pesquisar Empréstimo EPI</a>
+        </div>
+        <div class="grid-item access-item">
+            <a href="/cadastrar_epi">Cadastrar EPI</a>
+        </div>
+        <div class="grid-item access-item">
+            <a href="/listar_epi">Controle de EPI</a>
+        </div>
+        <div class="grid-item access-item">
+            <a href="/cadastrar_usuario">Cadastrar Usuário</a>
+        </div>
+        <div class="grid-item access-item">
+            <a href="/listar_usuarios">Pesquisar Usuário</a>
+        </div>
+    </div>
+
+    <div class="grid-item">
+        <h3>Últimas Atualizações</h3>
+        <p>Fique atento às últimas atualizações e informações relevantes para o uso dos EPIs.</p>
+    </div>
+</div>
+
 {% endblock content %}
