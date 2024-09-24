@@ -78,3 +78,8 @@ body {
     color: #fff; /* Cor do texto ao passar o mouse */
     background-color: #007bff; /* Cor de fundo ao passar o mouse */
 }
+
+.navbar-nav .nav-link {
+    font-size: 1.2em; /* Aumenta o tamanho da fonte */
+    font-weight: bold; /* Deixa a fonte em negrito */
+}
