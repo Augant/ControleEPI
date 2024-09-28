@@ -13,4 +13,28 @@
             <button type="submit" class="btn btn-primary">Salvar</button>
         </form>
     </div>
+
+    <!-- SweetAlert2 script -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Script para exibir mensagens de sucesso ou erro -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            {% if success_message %}
+            Swal.fire({
+                icon: 'success',
+                title: 'Sucesso',
+                text: '{{ success_message }}',
+                confirmButtonText: 'OK'
+            });
+            {% elif error_message %}
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: '{{ error_message }}',
+                confirmButtonText: 'OK'
+            });
+            {% endif %}
+        });
+    </script>
 {% endblock content %}

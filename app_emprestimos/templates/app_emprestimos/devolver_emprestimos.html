@@ -18,7 +18,8 @@
             </div>
             <div class="form-group">
                 <label>Data de Devolução:</label>
-                <input type="date" name="data_devolucao" class="form-control" required>
+                <input type="date" name="data_devolucao" class="form-control" required
+                       min="{{ emprestimo.data_emprestimo|date:'Y-m-d' }}">
             </div>
             <button type="submit" class="btn btn-primary">Confirmar Devolução</button>
         </form>

@@ -7,28 +7,36 @@
 {% block content %}
     <div class="container mt-5">
         <h1>Cadastrar Empréstimo</h1>
+
+        {% if success_message %}
+            <div class="alert alert-success">{{ success_message }}</div>
+        {% endif %}
+        {% if error_message %}
+            <div class="alert alert-danger">{{ error_message }}</div>
+        {% endif %}
+
         <form method="POST">
             {% csrf_token %}
             <div class="form-group">
-                {{ form.usuario.label_tag }}  <!-- Rótulo do Usuário -->
-                {{ form.usuario }}  <!-- Campo de entrada do Usuário -->
+                {{ form.usuario.label_tag }}
+                {{ form.usuario }}
             </div>
             <div class="form-group">
-                {{ form.epi.label_tag }}  <!-- Rótulo do EPI -->
-                {{ form.epi }}  <!-- Campo de entrada do EPI -->
+                {{ form.epi.label_tag }}
+                {{ form.epi }}
             </div>
             <div class="form-group">
-                {{ form.data_emprestimo.label_tag }}  <!-- Rótulo da Data de Empréstimo -->
-                {{ form.data_emprestimo }}  <!-- Campo de entrada da Data de Empréstimo -->
+                <label>Data de Empréstimo:</label>  <!-- Rótulo para Data de Empréstimo -->
+                <input type="text" value="{{ now|date:'d/m/Y' }}" class="form-control" readonly>
             </div>
             <div class="form-group">
-                {{ form.data_devolucao.label_tag }}  <!-- Rótulo da Data de Devolução -->
-                Caso não possua deixar em branco!
-                {{ form.data_devolucao }}  <!-- Campo de entrada da Data de Devolução -->
+                {{ form.data_devolucao.label_tag }}
+                <span>Caso não possua deixar em branco!</span>  <!-- Adicionando um span para o aviso -->
+                {{ form.data_devolucao }}
             </div>
             <div class="form-group">
-                {{ form.quantidade.label_tag }}  <!-- Rótulo da Quantidade -->
-                {{ form.quantidade }}  <!-- Campo de entrada da Quantidade -->
+                {{ form.quantidade.label_tag }}
+                {{ form.quantidade }}
             </div>
             <button type="submit" class="btn btn-primary">Salvar</button>
         </form>

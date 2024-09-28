@@ -7,7 +7,7 @@
 {% block content %}
     <div class="container mt-5">
         <h1>Cadastrar EPI</h1>
-        <form method="POST">
+        <form id="epiForm" method="POST">
             {% csrf_token %}
             <div class="form-group">
                 {{ form.nome_epi.label_tag }}  <!-- Rótulo do Nome do EPI -->
@@ -29,12 +29,40 @@
         </form>
     </div>
 
+    <!-- SweetAlert2 script -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         const quantidadeTotalInput = document.getElementById('id_quantidade_total');
         const quantidadeDisponivelInput = document.getElementById('id_quantidade_disponivel');
 
         quantidadeTotalInput.addEventListener('input', function() {
             quantidadeDisponivelInput.value = quantidadeTotalInput.value;
+        });
+
+        // Exibir mensagens de sucesso ou erro
+        document.addEventListener('DOMContentLoaded', function() {
+            {% if success_message %}
+            Swal.fire({
+                icon: 'success',
+                title: 'Sucesso',
+                text: '{{ success_message }}',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Limpar os campos do formulário após sucesso
+                    document.getElementById('epiForm').reset();
+                    document.getElementById('id_quantidade_disponivel').value = '';
+                }
+            });
+            {% elif error_message %}
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: '{{ error_message }}',
+                confirmButtonText: 'OK'
+            });
+            {% endif %}
         });
     </script>
 {% endblock content %}

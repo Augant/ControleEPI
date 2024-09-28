@@ -3,7 +3,10 @@ from .models import Usuario
 from .forms import UsuarioForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.contrib.auth.decorators import user_passes_test
 
+
+    
 def listar_usuarios(request):
     query = request.GET.get('q', '')
     cpf_query = request.GET.get('cpf', '')
@@ -21,15 +24,25 @@ def listar_usuarios(request):
 
 
 def cadastrar_usuario(request):
+    success_message = None
+    error_message = None
+
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('listar_usuarios')
+            success_message = "Usuário cadastrado com sucesso!"
+            form = UsuarioForm()  # Cria um novo formulário vazio para resetar os campos
+        else:
+            error_message = "Erro ao cadastrar o usuário. Verifique os dados inseridos."
     else:
         form = UsuarioForm()
 
-    return render(request, 'app_usuarios/cadastrar_usuario.html', {'form': form})
+    return render(request, 'app_usuarios/cadastrar_usuario.html', {
+        'form': form,
+        'success_message': success_message,
+        'error_message': error_message
+    })
 
 def atualizar_usuario(request, id):
     usuario = get_object_or_404(Usuario, id=id)
